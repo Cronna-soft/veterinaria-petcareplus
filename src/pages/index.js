@@ -1,0 +1,5 @@
+export * from './HomePage/HomePage.jsx'
+export * from './ServicioPage/ServicioPage.jsx'
+export * from './CitasPage/CitasPage.jsx'
+export * from './MascotasPage/MascotasPage.jsx'
+export * from './ContactoPage/ContactoPage.jsx'
