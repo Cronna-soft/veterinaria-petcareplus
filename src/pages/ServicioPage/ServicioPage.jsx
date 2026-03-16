@@ -38,7 +38,7 @@ export const ServicioPage = () => {
 
 			{/*EQUIPO SECTION*/}
 			<section className="">
-				{/*...*/}
+				{/*(PENDIENTE)*/}
 			</section>
 
 			{/*CTA SECTION*/}

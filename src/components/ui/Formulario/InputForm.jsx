@@ -1,4 +1,4 @@
-export const InputForm = ({typeInput = "text", nameFor = "", value = "", handleChange = "", place = ""}) => {
+export const InputForm = ({typeInput = "text", nameFor = "", value, handleChange, place = ""}) => {
 	return (
 		<>
 		<input 
