@@ -2,8 +2,10 @@ import { Link } from 'react-router'
 
 export const BotonComponent = ({url, texto, classname}) => {
 	return (
-		<Link to={`/${url}`}>
-			<button type="button" className={`boton ${classname}`}>{texto}</button>
+		<Link to={`/${url}`}
+			type="button" className={`boton ${classname}`}
+		>
+			{texto}
 		</Link>
 	)
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router'
+import { Link } from 'react-router'
 import NavDesktop from './NavDesktop.jsx'
 import NavMobile from './NavMobile.jsx'
 import MobileButton from './MobileButton.jsx'
+import navbarImage from '../../assets/images/logo_landscape.webp'
 
 const navLinks = [
 	{ label: "Inicio", to: "/" },
@@ -23,8 +24,7 @@ const Navbar = () => {
 	 		<div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-around text-center">
 	 			{/*LOGO*/}
 	 			<Link to="/">
-	 				{/*<img className="nav-image" src="asd" alt="Imagen Nav" />*/}
-	 				<h1 className="text-3xl font-semibold">PetCare+</h1>
+	 				<img className="w-30 h-auto object-cover" src={navbarImage} alt="Imagen Nav" />
 	 			</Link>
 
 	 			{/*MOBILE BOTON*/}

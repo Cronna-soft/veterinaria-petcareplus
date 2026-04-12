@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "img": "https://placehold.jp/000/fff/750x750.png",
+    "nombre": "Lorem ipsum",
+    "texto": "Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Reiciendis porro cumque atque vero odit, soluta."
+  },
+  {
+    "id": 2,
+    "img": "https://placehold.jp/000/fff/750x750.png",
+    "nombre": "Lorem ipsum",
+    "texto": "Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Modi, facilis. Rerum voluptatibus possimus dicta sequi."
+  },
+  {
+    "id": 3,
+    "img": "https://placehold.jp/000/fff/750x750.png",
+    "nombre": "Lorem ipsum",
+    "texto": "Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Voluptatem asperiores, eius provident quo illo dolorum."
+  },
+  {
+    "id": 4,
+    "img": "https://placehold.jp/000/fff/750x750.png",
+    "nombre": "Lorem ipsum",
+    "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque qui, modi incidunt deleniti harum ipsum?"
+  },
+  {
+    "id": 5,
+    "img": "https://placehold.jp/000/fff/750x750.png",
+    "nombre": "Lorem ipsum",
+    "texto": "Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Laboriosam rerum optio placeat maiores nisi repudiandae."
+  }
+]

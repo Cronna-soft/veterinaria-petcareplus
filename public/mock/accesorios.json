@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "categoria": "comida",
+    "titulo": "Bhingo Gatos",
+    "descripcion": "Adultos 4-10 años, 500g, carne res y cerdo",
+    "image": "/public/images/productos/comida/comida_gatos.webp"
+  },
+  {
+    "id": 2,
+    "categoria": "juguetes",
+    "titulo": "Cama para perros",
+    "descripcion": "Hueso para perros, sabor pollo",
+    "image": "/public/images/productos/juguetes/juguete_cama_perros.webp"
+  },
+  {
+    "id": 3,
+    "categoria": "accesorios",
+    "titulo": "Collar para mascotas",
+    "descripcion": "Collar diseño femenino con placa",
+    "image": "/public/images/productos/accesorios/accesorio_collar.webp"
+  },
+  {
+    "id": 4,
+    "categoria": "comida",
+    "titulo": "Bhingo Perros",
+    "descripcion": "Adultos 4-10 años, 500g, carne res y cerdo",
+    "image": "/public/images/productos/comida/comida_perros.webp"
+  },
+  {
+    "id": 5,
+    "categoria": "juguetes",
+    "titulo": "Hueso de hule",
+    "descripcion": "Hueso para perros, sabor pollo",
+    "image": "/public/images/productos/juguetes/juguete_hueso_hule.webp"
+  },
+  {
+    "id": 6,
+    "categoria": "accesorios",
+    "titulo": "Correa para Perros",
+    "descripcion": "Correo de paseo para perros",
+    "image": "/public/images/productos/accesorios/accesorio_correa_perros.webp"
+  },
+  {
+    "id": 7,
+    "categoria": "juguetes",
+    "titulo": "Rascador para gatos",
+    "descripcion": "Hueso para perros, sabor pollo",
+    "image": "/public/images/productos/juguetes/juguete_rascador_gatos.webp"
+  },
+  {
+    "id": 8,
+    "categoria": "accesorios",
+    "titulo": "Harnees + correa para perros",
+    "descripcion": "Correo de paseo para perros",
+    "image": "/public/images/productos/accesorios/accesorio_harnees_perros.webp"
+  }
+]

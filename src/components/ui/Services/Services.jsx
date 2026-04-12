@@ -2,8 +2,8 @@ export const Services = ({listado}) => {
 
 	return (
 		<>
-		{listado.map(({titulo, icon, descripcion, precio}, index) => (
-			<div key={index} className="bg-white p-5 lg:p-7 w-full rounded-lg shadow-sm">
+		{listado.map(({id, titulo, icon, descripcion, precio}) => (
+			<div key={id} className="bg-white p-5 lg:p-7 w-full rounded-lg shadow-sm">
 				<div className="w-full flex justify-between">
 					<h3 className="flex-shrink flex items-center font-semibold text-xl lg:text-3xl">
 						{titulo}

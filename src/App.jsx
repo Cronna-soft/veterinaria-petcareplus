@@ -1,13 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router'
 import Navbar from './components/Navbar/Navbar.jsx'
 import Footer from './components/Footer/Footer.jsx'
+import ScrollToTop from './components/ui/ScrollToTop/ScrollToTop.jsx'
 import { HomePage, ServicioPage, CitasPage, MascotasPage, ContactoPage } from './pages'
 
 function App() {
 
   return (
     <Router>
-      
+        <ScrollToTop/>
+
         <header className="relative bg-primario">
           <Navbar />
         </header>

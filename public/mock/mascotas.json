@@ -1,0 +1,99 @@
+[
+    {
+      "id": 1,
+      "tipo_mascota": "gatos",
+      "mascota": [
+        {
+          "id": 1,
+          "image": "/public/images/mascotas/gato_criollo.webp",
+          "nombre": "Gato criollo"
+        },
+        {
+          "id": 2,
+          "image": "/public/images/mascotas/gato_persa.webp",
+          "nombre": "Persa"
+        },
+        {
+          "id": 3,
+          "image": "/public/images/mascotas/gato_siames.webp",
+          "nombre": "siamés"
+        },
+        {
+          "id": 4,
+          "image": "/public/images/mascotas/gato_bengali.webp",
+          "nombre": "Bengalí"
+        },
+        {
+          "id": 5,
+          "image": "/public/images/mascotas/gato_himalayo.webp",
+          "nombre": "himalayo"
+        },
+        {
+          "id": 6,
+          "image": "/public/images/mascotas/gato_maine_coon.webp",
+          "nombre": "maine coon"
+        },
+        {
+          "id": 7,
+          "image": "/public/images/mascotas/gato_ragdoll.webp",
+          "nombre": "ragdoll"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "tipo_mascota": "perros",
+      "mascota": [
+        {
+          "id": 1,
+          "image": "/public/images/mascotas/perro_criollo.webp",
+          "nombre": "perro criollo"
+        },
+        {
+          "id": 2,
+          "image": "/public/images/mascotas/perro_labrador.webp",
+          "nombre": "Labrador"
+        },
+        {
+          "id": 3,
+          "image": "/public/images/mascotas/perro_pastor_aleman.webp",
+          "nombre": "Pastor alemán"
+        },
+        {
+          "id": 4,
+          "image": "/public/images/mascotas/perro_rottweiler.webp",
+          "nombre": "Rottweiler"
+        },
+        {
+          "id": 5,
+          "image": "/public/images/mascotas/perro_chihuahua.webp",
+          "nombre": "Chihuahua"
+        },
+        {
+          "id": 6,
+          "image": "/public/images/mascotas/perro_siberiano.webp",
+          "nombre": "Husky Siberiano"
+        },
+        {
+          "id": 7,
+          "image": "/public/images/mascotas/perro_pug.webp",
+          "nombre": "pug"
+        },
+        {
+          "id": 8,
+          "image": "/public/images/mascotas/perro_boxer.webp",
+          "nombre": "Boxer"
+        },
+        {
+          "id": 9,
+          "image": "/public/images/mascotas/perro_pitbull.webp",
+          "nombre": "Pitbull"
+        },
+        {
+          "id": 10,
+          "image": "/public/images/mascotas/perro_ame_bully.webp",
+          "nombre": "American Bully"
+        }
+      ]
+    }
+]

@@ -1,4 +1,4 @@
-import { serviciosHome as servicios } from '../../../data/servicios.js'
+import servicios  from '../../../data/servicios.json'
 
 export const HomeServices = () => {
 	return (

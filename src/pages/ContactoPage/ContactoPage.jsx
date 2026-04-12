@@ -1,5 +1,4 @@
-import {useState} from 'react'
-import {InputForm, BotonSubmitComponent} from '../../components/ui'
+import {BotonSubmitComponent} from '../../components/ui'
 
 export const ContactoPage = () => {
 
@@ -8,11 +7,14 @@ export const ContactoPage = () => {
 
 	return (
 		<>
-		<div className="grid grid-cols-1 grid-rows-2 lg:grid-cols-2 place-items-center justify-center gap-x-10 items-center lg:grid-rows-1 my-20 mx-auto px-5 w-auto max-w-6xl h-auto xl:gap-x-20">
+
+		<section className="hero-section hero-contacto h-screen w-full"/>
+
+		<div className="grid grid-cols-1 grid-rows-2 lg:grid-cols-2 place-items-center justify-center gap-x-5 items-center lg:grid-rows-1 my-20 mx-auto px-5 w-auto max-w-6xl h-auto xl:gap-x-20">
 			<div className="grid grid-flow-col grid-rows-2 place-items-center gap-y-5">
 				{/*FORMULARIO DE CONTACTO*/}
 				<section className="mx-auto max-w-lg h-auto">
-					<h2 className="mt-3 mb-7 text-center text-3xl text-black font-bold text-shadow-lg/25 text-shadow-amber-700 capitalize md:text-4xl">¡Contáctanos sin ningún problema!</h2>
+					<h1 className="mt-3 mb-7 text-center text-3xl text-black font-bold text-shadow-lg/25 text-shadow-amber-700 capitalize md:text-4xl">¡Contáctanos sin ningún problema!</h1>
 
 					<form action={`https://formsubmit.co/${correo}`} 
 						className="space-y-4 mb-5" 
@@ -91,21 +93,21 @@ export const ContactoPage = () => {
 				</section>
 
 				{/*INFO. ATENCIÓN AL CLIENTE*/}
-				<section className="mx-auto w-full h-auto">
-					<ul className="flex flex-col items-center gap-1.5 text-center">
-						<li className="text-gray-700 text-xl">
-							<i className="bi bi-geo-alt-fill text-4xl text-(--accent-color)"></i> Calle 123 456-789, Colombia
+				<section className="mx-auto w-full h-auto text-center">
+					<ul className="flex flex-col gap-5 lg:gap-3 text-left items-center">
+						<li className="text-gray-700 text-md lg:text-xl text-justify">
+							<i className="bi bi-telephone-fill text-2xl text-(--accent-color) lg:mr-4"/> +57 300 123 4567
 						</li>
-						<li className="text-gray-700 text-xl">
-							<i className="bi bi-telephone-fill text-4xl text-(--accent-color)"></i> +12345 67890
+						<li className="text-gray-700 text-md lg:text-xl text-justify">
+							<i className="bi bi-geo-alt-fill text-2xl text-(--accent-color) lg:mr-4"/> Calle 123 456-789, Colombia
 						</li>
-						<li className="text-gray-700 text-justify text-xl">
-							<i className="bi bi-alarm text-4xl text-(--accent-color)"></i> <span className='font-bold'>Lunes - Jueves:</span> 8:00 - 18:00
+						<li className="text-gray-700 text-justify text-md lg:text-xl">
+							<i className="bi bi-alarm text-2xl text-(--accent-color) lg:mr-4"/> <span className='font-bold'>Lunes - Jueves:</span> 8:00 - 18:00
 						</li>
-						<li className="text-gray-700 text-justify text-xl">
-							<i className="bi bi-alarm text-4xl text-(--accent-color)"></i> <span className='font-bold'>Viernes - Sábado:</span> 8:00 - 16:00
+						<li className="text-gray-700 text-justify text-md lg:text-xl">
+							<i className="bi bi-alarm text-2xl text-(--accent-color) lg:mr-4"/> <span className='font-bold'>Viernes - Sábado:</span> 8:00 - 16:00
 						</li>
-						<li className="mt-10 text-center text-gray-400 font-medium italic">
+						<li className="mt-5 text-center text-gray-400 font-medium italic">
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio sint nobis reprehenderit fuga. Expedita, obcaecati.</p>
 						</li>
 					</ul>
@@ -113,7 +115,6 @@ export const ContactoPage = () => {
 			</div>
 		</div>
 
-		{/*CTA: agendar cita (estructura y diseño PENDIENTE)*/}
 		</>
 	)
 }

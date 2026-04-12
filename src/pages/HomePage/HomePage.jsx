@@ -1,14 +1,33 @@
+import { useState, useEffect } from 'react'
 import { BotonComponent, HomeServices, HomeElegir, HomeTestimonio } from '../../components/ui/index.js'
-import {testimonios} from '../../data/testimonios.js'
+import{ getTestimonios} from '../../services/homeService.js'
 
 export const HomePage = () => {
+
+	const [testimonios, setTestimonios] = useState([])
+
+	useEffect(() => {
+		const loadTestimonios = async () => {
+			try {
+				const data = await getTestimonios()
+				setTestimonios(data)
+			} catch (error) {
+				console.error('Error al cargar testimonios:', error)
+			}
+		}
+
+		loadTestimonios()
+	}, [])
+
 	return (
 		<>
 			{/*HERO SECTION*/}
-			<section className="hero-section mx-auto max-w-2xl text-center py-30 px-5 flex flex-col items-center justify-center lg:text-start lg:items-start lg:m-0 lg:px-15 lg:ml-35 lg:justify-end gap-7">
-				<h2 className="text-5xl font-medium lg:text-7xl">Cuidamos a tu mascota con amor</h2>
-				<h4 className="text-xl text-gray-700 lg:text-2xl">Servicios de salud, estética y bienestar para tu mascota</h4>
-				<BotonComponent url="citas" texto="Agendar cita" classname="boton-primario" />
+			<section className="hero-section hero-home h-[90vh] flex items-end">
+				<div className="bg-(--secundario-color)/90 mb-20 mx-auto w-75 rounded-3xl h-auto text-center py-15 px-5 flex flex-col items-center justify-center md:w-lg lg:text-start lg:items-start lg:m-0 lg:px-15 lg:ml-35 lg:mb-10 lg:justify-end lg:w-2xl gap-7">
+					<h2 className="text-5xl font-medium text-shadow-lg/75 text-shadow-white lg:text-7xl">Cuidamos a tu mascota con amor</h2>
+					<h4 className="text-xl text-gray-700 text-shadow-lg/75 text-shadow-white lg:text-2xl">Servicios de salud, estética y bienestar para tu mascota</h4>
+					<BotonComponent url="citas" texto="Agendar cita" classname="boton-primario" />
+				</div>
 			</section>
 			
 			<div className="bg-accent py-8 px-2 w-full">
@@ -41,17 +60,17 @@ export const HomePage = () => {
 				
 				<div className="flex flex-col md:grid md:grid-cols-2 md:place-items-center lg:flex items-center justify-center gap-5">
 					{/*TESTIMONIOS SECTION*/}
-					<section className="my-2 mx-auto p-5 max-w-md">
-						<div className="scroll-content gap-7 p-5 w-70 sm:w-95">
-							{testimonios.map((item, index) => (
-								<HomeTestimonio key={index} data={item} />
+					<section className="bg-secundario rounded-2xl my-2 mx-auto p-5 max-w-md">
+						<div className="slider-content carousel-scroll gap-7 p-5 w-70 sm:w-95">
+							{testimonios.map(item => (
+								<HomeTestimonio key={item.id} data={item} />
 							))}
 						</div>
 					</section>
 
 					{/*CTA SECTION*/}
 					<section className="p-5 margin flex items-center justify-center">
-						<div className="bg-secundario py-10 px-5 rounded-2xl md:px-10 lg:px-20">
+						<div className="bg-secundario py-10 px-5 rounded-2xl border-x-7 border-(--accent-color) md:px-10 lg:px-20">
 							<h4 className="font-medium text-3xl text-black text-center mb-5">Agendar una cita</h4>
 							<BotonComponent url="citas" texto="Agendar cita" classname="boton-primario" />
 						</div>

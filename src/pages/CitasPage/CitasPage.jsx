@@ -1,13 +1,17 @@
 // React
 import { useState } from "react";
-// Components
+// Componentes
 import { 
 	LabelForm, 
 	SelectForm, 
-	BotonSubmitComponent,
-	InputForm } from '../../components/ui'
+	InputForm,
+	FormStatusMessage
+} from '../../components/ui'
 //------------
 import { FormPreview } from './FormPreview.jsx'
+// Data
+import listadoServicios from '/public/mock/servicios-page.json'
+import listadoMascotas from '../../data/listadoMascotas.json'
 // MATERIAL UI
 import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -17,76 +21,108 @@ import { DigitalClock } from '@mui/x-date-pickers/DigitalClock';
 
 export const CitasPage = () => {
 
-  const [form, setForm] = useState({
+  const initialFormState = {
   	servicio: "",
   	fecha: dayjs(),
   	hora: dayjs(),
-  	datos: {
-  		nombre: "",
-  		tel: "",
-  		email: "",
-  		mascota: ""
-  	}
-  })
+		nombre: "",
+		tel: "",
+		email: "",
+		mascota: ""
+  }
 
-  const [showModal, setShowModal] = useState(false)
+	const [form, setForm] = useState(initialFormState) /*Estado limpiado de formulario*/
+  const [showModal, setShowModal] = useState(false) /*Estado activo de modal preview*/
+  const [successMessage, setSuccessMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  	setSuccessMessage("")
+		setErrorMessage("")
+    e.preventDefault()
+
+    // Validación básica antes de abrir modal
+    if (
+      !form.servicio ||
+      !form.fecha ||
+      !form.hora ||
+      !form.nombre.trim() ||
+      !form.tel.trim() ||
+      !form.email.trim() ||
+      !form.mascota.trim()
+    ) {
+      setSuccessMessage("")
+			setErrorMessage("Por favor completa todos los campos antes de continuar.")
+      return
+    }
 
     setShowModal(true)
-  };
+  }
   
   const handleChange = (e) => {
   	const { name, value } = e.target
+		
+		setForm({
+			...form,
+				[name]: value
+		})
+  	
+  }
 
-  	if (["nombre", "tel", "email", "mascota"].includes(name)) {
-  		setForm({
-  			...form,
-  			datos: {
-  				...form.datos,
-  				[name]: value
-  			}
-  		})
-  	} else {
-  		setForm({
-  			...form,
-  			[name]: value
-  		})
-  	}
+  const resetForm = () => {
+    setForm(initialFormState)
+  }
+
+  const handleCitaSuccess = (message) => {
+		setErrorMessage("")
+  	setSuccessMessage(message)
   }
 
 	return (
 		<>
-			{/*HERO SECTION*/}
-			<section className="h-screen w-full">
-				<div className="flex flex-col justify-center items-center gap-10 max-w-6xl">
-					<h2 className="text-2xl text-center font-bold lg:text-6xl">Agenda una cita para tu amigo</h2>
+			{/* HERO SECTION */}
+			<section className="h-screen w-full mb-45">
+				<div className="hero-section hero-citas h-full w-full" />
+				<div className="flex flex-col justify-center items-center gap-10 py-7 w-full bg-(--accent-color) border-y-5 border-t-(--secundario-color) border-b-black">
+					<h1 className="text-2xl text-center font-bold lg:text-5xl text-white">
+            Agenda una cita para tu amigo
+          </h1>
 				</div>
 			</section>
 
-			{/*FORM SECTION*/}
-			<section className="min-screen h-auto max-w-4xl px-2 sm:px-10 mx-auto my-10">
+			{/* FORM SECTION */}
+			<section className="min-screen h-auto max-w-4xl px-2 sm:px-10 mx-auto my-30 md:my-40">
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<form onSubmit={handleSubmit}
+					<form 
+            onSubmit={handleSubmit}
 						className="flex flex-col gap-10"
 					>
-						{/*Servicio*/}
+						{/* Servicio */}
 						<div className="w-full">
 							<LabelForm 
 								nameFor="servicio" 
 								pasoN={1} 
-								label="Selecciona uno de nuestros servicios" />
+								label="Selecciona uno de nuestros servicios" 
+              />
 							<div className="px-2 sm:px-10 lg:px-15">
-								<SelectForm 
-									nameFor="servicio" 
-									value={form.servicio} 
-									handleChange={handleChange} 
-								/>
+								<select 
+									name="servicio"
+									value={form.servicio}
+									onChange={handleChange}
+									className="formInput" 
+									required
+								>
+									<option defaultValue="">Selecciona un servicio</option>
+									{listadoServicios.map(({id, titulo, precio})=>(
+										<option key={id} value={`${titulo} - $${precio}`} className="capitalize">
+											{titulo} - ${precio}
+										</option>
+									))}
+								</select>
 							</div>
 						</div>
 
-						{/*Fecha y Hora (Biblioteca MUI X)*/}
+						{/* Fecha y Hora */}
 						<div className="w-auto">
 							<LabelForm 
 								nameFor="fechaAgenda" 
@@ -95,7 +131,7 @@ export const CitasPage = () => {
 							/>
 
 							<div className="grid md:grid-cols-2">
-								{/*Fecha: Calendario*/}
+								{/* Fecha */}
 								<div>
 				    			<DateCalendar 
 					    			views={['day']} 
@@ -105,7 +141,7 @@ export const CitasPage = () => {
 					    		/>
 								</div>
 
-								{/*Hora: Reloj*/}
+								{/* Hora */}
 								<div className="digitalclock">
 									<DigitalClock 
 					    			views={['hours']} 
@@ -118,16 +154,17 @@ export const CitasPage = () => {
 							</div>
 						</div>
 
-						{/*Datos del dueño*/}
+						{/* Datos del dueño */}
 						<div className="w-full">
 							<LabelForm
 								nameFor="datos"
 								pasoN={3}
-								label="Digita tus datos de contacto" />
+								label="Digita tus datos de contacto" 
+              />
 							<div className="px-2 sm:px-10 lg:px-15 space-y-4">
 								<InputForm
 									nameFor="nombre"
-									value={form.datos.nombre}
+									value={form.nombre}
 									handleChange={handleChange}	
 									place="Nombre Completo"								
 								/>
@@ -135,7 +172,7 @@ export const CitasPage = () => {
 								<InputForm
 									typeInput="tel"
 									nameFor="tel"
-									value={form.datos.tel}
+									value={form.tel}
 									handleChange={handleChange}	
 									place="Télefono"								
 								/>
@@ -143,33 +180,54 @@ export const CitasPage = () => {
 								<InputForm 
 									typeInput="email"
 									nameFor="email"
-									value={form.datos.email}
+									value={form.email}
 									handleChange={handleChange}
-									place="Correo electrónico" />
+									place="Correo electrónico" 
+                />
 
-								<InputForm 
-									nameFor="mascota"
-									value={form.datos.mascota}
+								<SelectForm 
+									nameFor="mascota" 
+									value={form.mascota} 
 									handleChange={handleChange}
-									place="Perro, gato, etc." />
+									place="Selecciona una mascota"
+									listado={listadoMascotas} 
+								/>
 
-								<p className="text-md text-gray-500 text-center italic">"<strong>Advertencia:</strong> Para una mejor comunicación posterior a tu reservación de nuestros servicios, necesitamos que digites claramente todos los datos que solicitamos. ¡Gracias!"</p>
+								<p className="text-md text-gray-500 text-center italic">
+                  "<strong>Advertencia:</strong> Para una mejor comunicación posterior a tu reservación de nuestros servicios, necesitamos que digites claramente todos los datos que solicitamos. ¡Gracias!"
+                </p>
 							</div>
 						</div>
 
-						<button className="boton boton-primario">Agendar</button>
-
-						{ showModal && (
-							
-							<FormPreview
-								servicio={form.servicio}
-								fecha={form.fecha}
-								hora={form.hora} 
-								datos={form.datos} 
-								setShowModal={setShowModal} />
-						
+						{successMessage && (
+							<FormStatusMessage type="success" message={successMessage} />
 						)}
 
+						{errorMessage && (
+							<FormStatusMessage type="error" message={errorMessage} />
+						)}
+
+						<div>
+							<LabelForm
+									nameFor=""
+									pasoN={4}
+									label="Agenda con nosotros" 
+	            />
+
+							<button type="submit" className="boton boton-primario" arial-label="Agenda una cita con nosotros" >
+	              Agendar
+	            </button>
+						</div>
+
+
+						{showModal && (
+							<FormPreview
+								formData={form}
+								setShowModal={setShowModal}
+                resetForm={resetForm}
+                onSuccess={handleCitaSuccess}
+							/>
+						)}
 					</form>
 				</LocalizationProvider>
 			</section>

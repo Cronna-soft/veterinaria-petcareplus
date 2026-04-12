@@ -1,6 +1,6 @@
 import { SelectItem } from '../../ui'
 
-export const SelectForm = ({nameFor, value, handleChange}) => {
+export const SelectForm = ({nameFor, value, handleChange, place, listado}) => {
 	return (
 		<select 
 			name={nameFor}
@@ -9,8 +9,8 @@ export const SelectForm = ({nameFor, value, handleChange}) => {
 			className="formInput" 
 			required
 		>
-			<option defaultValue="">Selecciona un servicio</option>
-			<SelectItem />
+			<option defaultValue="">{place}</option>
+			<SelectItem items={listado} />
 		</select>
 	)
 }

@@ -1,0 +1,22 @@
+[
+	{
+		"icon": "heart-pulse",
+		"nombre": "salud",
+		"descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing."
+	},
+	{
+		"icon": "scissors",
+		"nombre": "estética",
+		"descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing."
+	},
+	{
+		"icon": "person-walking",
+		"nombre": "paseos",
+		"descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing."
+	},
+	{
+		"icon": "house-door-fill",
+		"nombre": "hospedaje",
+		"descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing."
+	}
+]

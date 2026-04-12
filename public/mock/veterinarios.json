@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "image": "/public/images/veterinarios/karl_smith.webp",
+    "nombre": "Karl Smith",
+    "telefono": "+1 (201) 629-6229",
+    "mail": "y2n29e5w6n@bltiwd.com"
+  },
+  {
+    "id": 2,
+    "image": "/public/images/veterinarios/lorena_smith.webp",
+    "nombre": "Lorena Smith",
+    "telefono": "+1 (602) 957-3343",
+    "mail": "3tdae81d8l@yzcalo.com"
+  },
+  {
+    "id": 3,
+    "image": "/public/images/veterinarios/laura_guzman.webp",
+    "nombre": "Laura Gúzman",
+    "telefono": "+1 (201) 565-3787",
+    "mail": "5e4e3bujsw@wnbaldwy.com"
+  },
+  {
+    "id": 4,
+    "image": "/public/images/veterinarios/ethan_vargas.webp",
+    "nombre": "Ethan Vargas",
+    "telefono": "+1 (213) 679-1404",
+    "mail": "yuszuo550t@ruutukf.com"
+  }
+]

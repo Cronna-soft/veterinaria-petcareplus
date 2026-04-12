@@ -1,18 +1,44 @@
-import { BotonSubmitComponent } from '../../components/ui'
+import {useState} from 'react'
+import {FormStatusMessage} from '../../components/ui'
+import citasService from '../../services/citasService.js'
 
-export const FormPreview = ({servicio, fecha, hora, datos, setShowModal}) => {
+export const FormPreview = ({ formData, setShowModal, resetForm, onSuccess }) => {
 
+	const { servicio, fecha, hora, nombre, tel, email, mascota } = formData
+	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [errorMessage, setErrorMessage] = useState("")
 
-  const handleConfirm = () => {
-  	console.log("Enviando datos:", {
-      servicio: servicio,
-      fecha: fecha.format("DD/MM/YYYY"),
-      hora: hora.format("HH:mm"),
-      ...datos
-    });
+	const handleConfirm = async () => {
+		try {
+			setIsSubmitting(true)
+			setErrorMessage("")
 
-  	setShowModal(false)
-  }
+      const nuevaCita = {
+        servicio,
+        fecha: fecha ? fecha.format("YYYY-MM-DD") : "",
+        hora: hora ? hora.format("HH:mm") : "",
+        nombre,
+        tel,
+        email,
+        mascota
+      }
+
+			await citasService.createCita(nuevaCita)
+
+			setShowModal(false)
+      resetForm()
+
+      if (onSuccess) {
+      	onSuccess("¡Tu cita fue enviada correctamente! Te contactaremos lo antes posible.")
+      }
+
+		} catch (error) {
+			console.error(error)
+			setErrorMessage("No pudimos enviar tu cita en este momento. Intenta de nuevo en otro momento.")
+		} finally {
+			setIsSubmitting(false)
+		}
+	}
 
 	return (
 		<div className="fixed inset-0 bg-black/90 p-2 flex justify-center items-center z-50">
@@ -21,46 +47,58 @@ export const FormPreview = ({servicio, fecha, hora, datos, setShowModal}) => {
 					Vista previa de la cita
 				</h3>
 
+				{errorMessage && (
+					<div className="mb-4">
+						<FormStatusMessage type="error" message={errorMessage} />
+					</div>
+				)}
+
 				<p className="text-white capitalize">
-					<strong>Servicio:</strong> {servicio || 'Sin selecionar'}
+					<strong>Servicio:</strong> {servicio || 'Sin seleccionar'}
+				</p>
+				
+				<p className="text-white">
+					<strong>Fecha:</strong> {fecha ? fecha.format("DD/MM/YYYY") : 'Sin seleccionar'}
 				</p>
 
 				<p className="text-white">
-					<strong>Fecha:</strong> {fecha ? fecha.format("DD/MM/YYYY") : 'Sin selecionar'}
-				</p>
-
-				<p className="text-white">
-					<strong>Hora:</strong> {hora ? hora.format("HH:mm") : 'Sin selecionar'}
+					<strong>Hora:</strong> {hora ? hora.format("HH:mm") : 'Sin seleccionar'}
 				</p>
 
 				<div className="mt-3">
 					<p className="text-white capitalize">
-						<strong>Nombre:</strong> {datos?.nombre || '—'}
+						<strong>Nombre:</strong> {nombre || '—'}
 					</p>
 					<p className="text-white">
-						<strong>Teléfono:</strong> {datos?.tel || '—'}
+						<strong>Teléfono:</strong> {tel || '—'}
 					</p>
 					<p className="text-white">
-						<strong>Email:</strong> {datos?.email || '—'}
+						<strong>Email:</strong> {email || '—'}
 					</p>
 					<p className="text-white capitalize">
-						<strong>Mascota:</strong> {datos?.mascota || '—'}
+						<strong>Mascota:</strong> {mascota || '—'}
 					</p>
 				</div>
 
-				<p className="text-md text-(--secundario-color) text-center italic">"<strong>Aviso:</strong> Gracias por tu reservación, nos comunicaremos contigo lo más pronto posible, en caso de no comunicarnos antes de la reserva para hablar de ciertos detalles, lo aplazaremos para una fecha que sea perfecta."</p>
+				<p className="text-md text-(--secundario-color) text-center italic mt-4">
+          "<strong>Aviso:</strong> Nos comunicaremos contigo lo más pronto posible. En caso de no hacerlo antes de la hora reservada, la reprogramaremos contigo para una fecha ideal."
+        </p>
 
-				<div className="flex justify-center items-end mt-7">
+				<div className="flex justify-center items-end gap-4 mt-7">
 					<button 
 						className="boton boton-secundario"
-					 	onClick={() => setShowModal(false)} >
-					Cancelar
+					 	onClick={() => setShowModal(false)}
+					 	disabled={isSubmitting}
+					>
+						Cancelar
 					</button>
 					
 					<button 
 						className="boton boton-secundario"
-					 	onClick={handleConfirm} >
-					Enviar
+					 	onClick={handleConfirm}
+					 	disabled={isSubmitting}
+					>
+						{isSubmitting ? 'Enviando...' : 'Enviar'}
 					</button>
 				</div>
 			</div>
