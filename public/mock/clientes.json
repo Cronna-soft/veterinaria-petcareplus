@@ -1,56 +1,56 @@
 [
   {
     "id": 1,
-    "image": "/public/images/mascotas/perro_pug.webp",
+    "image": "/images/mascotas/perro_pug.webp",
     "nombre": "JB",
     "raza": "pug",
     "especie": "Perro"
   },
   {
     "id": 2,
-    "image": "/public/images/mascotas/gato_criollo.webp",
+    "image": "/images/mascotas/gato_criollo.webp",
     "nombre": "Duquesa",
     "raza": "gato criollo",
     "especie": "gato"
   },
   {
     "id": 3,
-    "image": "/public/images/mascotas/perro_rottweiler.webp",
+    "image": "/images/mascotas/perro_rottweiler.webp",
     "nombre": "Chop",
     "raza": "Rottweiler",
     "especie": "Perro"
   },
   {
     "id": 4,
-    "image": "/public/images/mascotas/gato_criollo.webp",
+    "image": "/images/mascotas/gato_criollo.webp",
     "nombre": "Sam",
     "raza": "gato criollo",
     "especie": "gato"
   },
   {
     "id": 5,
-    "image": "/public/images/mascotas/gato_criollo.webp",
+    "image": "/images/mascotas/gato_criollo.webp",
     "nombre": "Milan",
     "raza": "gato criollo",
     "especie": "gato"
   },
   {
     "id": 6,
-    "image": "/public/images/mascotas/perro_criollo.webp",
+    "image": "/images/mascotas/perro_criollo.webp",
     "nombre": "Martha",
     "raza": "perro criollo",
     "especie": "perro"
   },
   {
     "id": 7,
-    "image": "/public/images/mascotas/perro_pastor_aleman.webp",
+    "image": "/images/mascotas/perro_pastor_aleman.webp",
     "nombre": "Zeus",
     "raza": "pastor alemán",
     "especie": "perro"
   },
   {
     "id": 8,
-    "image": "/public/images/mascotas/perro_labrador.webp",
+    "image": "/images/mascotas/perro_labrador.webp",
     "nombre": "mr. peanut butter",
     "raza": "labrador",
     "especie": "perro"
